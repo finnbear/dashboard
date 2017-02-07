@@ -11,8 +11,10 @@ Game.initialize = function() {
 	Display.canvas.addEventListener('mousemove',
 	function(e) {
 		var canvasRectangle = Display.canvas.getBoundingClientRect();
-		Mouse.x = e.clientX - canvasRectangle.left;
-		Mouse.y = e.clientY - canvasRectangle.top;
+		var docX = e.clientX - canvasRectangle.left;
+		var docY = e.clientY - canvasRectangle.top;
+		Mouse.x = translate(docX, 0, canvasRectangle.width, 0, Display.width);
+		Mouse.y = translate(docY, 0, canvasRectangle.height, 0, Display.height);
 	},
 	false);
 	Display.canvas.addEventListener('mousedown',
@@ -54,18 +56,36 @@ Game.initialize = function() {
 	
 	$.getJSON("objects.json", function(json) {
 		Game.objects = json;
-		alert(json);
 	});
 }
 
 Game.update = function() {
-	
+	Game.objects.forEach(function(object) {
+		
+	});
 }
 
 Game.draw = function() {
 	Display.context.clearRect(0, 0, Display.width, Display.height);
 	Display.context.fillStyle = Display.backgroundColor;
 	Display.context.fillRect(0, 0, Display.width, Display.height);
+	
+	Game.objects.forEach(function(object) {
+		if (object.enabled)
+		{
+			if (mouseInRect(object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight))
+			{
+				
+				Display.context.fillStyle = "black";
+			}
+			else
+			{
+				console.log(Mouse)
+				Display.context.fillStyle = "red";
+			}
+			Display.context.fillRect(object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight);
+		}
+	});
 }
 
 window.addEventListener("keydown",
@@ -78,8 +98,30 @@ window.addEventListener("keydown",
     false);
 
 window.addEventListener('keyup',
-    function(e){
-        Keyboard.keys[e.keyCode] = false;
-    },
-    false);
+	function(e){
+		Keyboard.keys[e.keyCode] = false;
+	},
+	false);
+	
+// Utility Functions
+var translate = function(value, inMin, inMax, outMin, outMax)
+{
+	return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+}
+
+var inRange = function(value, bound1, bound2)
+{
+	return (value >= bound1) == (value <= bound2);
+}
+
+var inRect = function(x, y, rectX, rectY, rectWidth, rectHeight)
+{
+	return inRange(x, rectX, rectX + rectWidth) && inRange(y, rectY, rectY + rectHeight);
+}
+
+var mouseInRect = function(rectX, rectY, rectWidth, rectHeight)
+{
+	return inRect(Mouse.x, Mouse.y, rectX, rectY, rectWidth, rectHeight);
+}
+
 
