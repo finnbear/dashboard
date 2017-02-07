@@ -1,1 +1,25 @@
-<p>Test</p>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Dashboard</title>
+	<meta name="description", content="An online game">
+	<meta name="author", content="Finn Bear">
+
+	<script src="script.js"></script>
+
+	<link rel="stylesheet" href="style.css">
+
+	<!--[if lt IE 9]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div style="height:15%; min-height:50px; background-color:#27ae60; border: thick solid #2c3e50;">
+		<p class="game-tile-text" style="color:#ecf0f1; margin-left:20px; font-weight: bold;">Arcade</p>
+	</div>
+	<div class="game-canvas-tile">
+		<canvas id="viewport" class="game-canvas" width="100" height="100"></canvas>
+	</div>
+</body>
