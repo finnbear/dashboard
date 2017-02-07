@@ -1,7 +1,7 @@
-var Game = {}
+var Game = {objects: []}
 var Display = {canvas: null, context: null, width: 0, height: 0, backgroundColor: "white"}
 var Keyboard = {keys: []}
-var Mouse = {x:0, y:0, left: false, right: false}
+var Mouse = {x:0, y:0, left: false, middle: false, right: false}
 
 Game.initialize = function() {
 	Display.canvas = document.getElementById("viewport");
@@ -15,10 +15,51 @@ Game.initialize = function() {
 		Mouse.y = e.clientY - canvasRectangle.top;
 	},
 	false);
+	Display.canvas.addEventListener('mousedown',
+	function(e) {
+		switch (e.button)
+		{
+			case 0: // Left Click
+				Mouse.left = true;
+				break;
+			case 1: // Middle Click
+				Mouse.middle = true;
+				break;
+			case 2: // Right Click
+				Mouse.right = true;
+				break;
+			default:
+				alert("Thats one button you actually shouldn't press!");
+		}
+	},
+	false);
+	Display.canvas.addEventListener('mouseup',
+	function(e) {
+		switch (e.button)
+		{
+			case 0: // Left Click
+				Mouse.left = false;
+				break;
+			case 1: // Middle Click
+				Mouse.middle = false;
+				break;
+			case 2: // Right Click
+				Mouse.right = false;
+				break;
+			default:
+				alert("Thats one button you actually shouldn't press!");
+		}
+	},
+	false);
+	
+	$.getJSON("objects.json", function(json) {
+		Game.objects = json;
+		alert(json);
+	});
 }
 
 Game.update = function() {
-
+	
 }
 
 Game.draw = function() {

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 0,
+    "enabled": true,
+    "clicks": 0,
+    "actions": [
+      {
+        "id": 0,
+        "clicks": 1,
+        "newState": false
+      },
+      {
+        "id": 0,
+        "clicks": 5,
+        "newState": true
+      }
+    ],
+    "sprite": {
+      "source": "button_red_danger.png",
+      "frame": 0,
+      "frames": 3,
+      "frameWidth": 76,
+      "frameHeight": 76,
+      "displayX": 10,
+      "displayY": 10,
+      "displayWidth": 32,
+      "displayHeight": 32
+    }
+  }
+]
