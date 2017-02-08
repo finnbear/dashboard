@@ -66,7 +66,34 @@ Game.initialize = function() {
 
 Game.update = function() {
 	Game.objects.forEach(function(object) {
-		
+		if (object.enabled)
+		{
+			switch (object.type)
+			{
+				case "button":
+					if (mouseInRect(object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight))
+					{
+						if (Mouse.left)
+						{
+							object.sprite.frame = 2;
+							object.lastPressed = +new Date();
+						}
+						else if (+new Date() - object.lastPressed < 150)
+						{
+							object.sprite.frame = 2;
+						}
+						else
+						{
+							object.sprite.frame = 1
+						}	
+					}
+					else
+					{
+						object.sprite.frame = 0;
+					}
+					break;
+			}
+		}
 	});
 }
 
@@ -78,21 +105,9 @@ Game.draw = function() {
 	Game.objects.forEach(function(object) {
 		if (object.enabled)
 		{
-			var frame = 0;
-		
-			if (mouseInRect(object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight))
-			{
-				if (Mouse.left)
-				{
-					frame = 2;
-				}
-				else
-				{
-					frame = 1
-				}
-			}
 			
-			Display.context.drawImage(object.sprite.image, object.sprite.frameWidth * frame, 0, object.sprite.frameWidth, object.sprite.frameHeight, object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight);
+			
+			Display.context.drawImage(object.sprite.image, object.sprite.frameWidth * object.sprite.frame, 0, object.sprite.frameWidth, object.sprite.frameHeight, object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight);
 		}
 	});
 }
