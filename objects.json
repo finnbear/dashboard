@@ -41,6 +41,11 @@
         "id": 0,
         "clicks": 1,
         "newState": false
+      },
+      {
+        "id": 0,
+        "clicks": 2,
+        "newState": true
       }
     ],
     "sprite": {
@@ -51,8 +56,8 @@
       "pressedFrame": 2,
       "frameWidth": 76,
       "frameHeight": 76,
-      "displayX": 400,
-      "displayY": 10,
+      "displayX": 200,
+      "displayY": 100,
       "displayWidth": 100,
       "displayHeight": 100,
       "hoverRadius": 0.80

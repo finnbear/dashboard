@@ -84,20 +84,34 @@ Game.update = function() {
 				if (Mouse.left)
 				{
 					object.sprite.frame = object.sprite.pressedFrame;
+					if (!object.sprite.pressed && !(+new Date() - object.lastPressed < 150))
+					{
+						object.clicks += 1;
+						object.actions.forEach(function(action) {
+							if (object.clicks == action.clicks)
+							{
+								Game.objects[action.id].enabled = action.newState;
+							}
+						});
+					}
+					object.sprite.pressed = true;
 					object.lastPressed = +new Date();
 				}
 				else if (+new Date() - object.lastPressed < 150)
 				{
 					object.sprite.frame =  object.sprite.pressedFrame;
+					object.sprite.pressed = false;
 				}
 				else
 				{
 					object.sprite.frame = object.sprite.hoveredFrame;
+					object.sprite.pressed = false;
 				}	
 			}
 			else
 			{
 				object.sprite.frame = 0;
+				object.sprite.pressed = false;
 			}
 		}
 	});
