@@ -90,7 +90,23 @@ Game.update = function() {
 						object.actions.forEach(function(action) {
 							if (object.clicks == action.clicks)
 							{
-								Game.objects[action.id].enabled = action.newState;
+								switch (action.type)
+								{
+									case "enable":
+										Game.objects[action.id].enabled = true;
+										Game.objects[action.id].clicks = 0;
+										Game.objects[action.id].sprite.pressed = false;
+										break;
+									case "disable":
+										Game.objects[action.id].enabled = false;
+										Game.objects[action.id].clicks = 0;
+										Game.objects[action.id].sprite.pressed = false;
+										break;
+									case "defaultFrame":
+										Game.objects[action.id].sprite.defaultFrame = action.value;
+										break;
+								}
+								
 							}
 						});
 					}
@@ -110,7 +126,7 @@ Game.update = function() {
 			}
 			else
 			{
-				object.sprite.frame = 0;
+				object.sprite.frame = object.sprite.defaultFrame;
 				object.sprite.pressed = false;
 			}
 		}

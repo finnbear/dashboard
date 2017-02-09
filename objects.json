@@ -7,19 +7,19 @@
     "actions": [
       {
         "id": 1,
-        "clicks": 1,
-        "newState": true
+        "clicks": 3,
+        "type": "enable"
       },
       {
-        "id": 2,
-        "clicks": 5,
-        "newState": true
+        "id": 0,
+        "clicks": 3,
+        "type": "disable"
       }
     ],
     "sprite": {
       "source": "button_red.png",
       "shape": "circle",
-      "frame": 0,
+      "defaultFrame": 0,
       "hoveredFrame": 1,
       "pressedFrame": 2,
       "frameWidth": 76,
@@ -40,18 +40,19 @@
       {
         "id": 0,
         "clicks": 1,
-        "newState": false
+        "type": "disable"
       },
       {
         "id": 0,
-        "clicks": 2,
-        "newState": true
+        "clicks": 3,
+        "type": "enable"
       }
     ],
     "sprite": {
       "source": "button_red.png",
       "shape": "rect",
       "frame": 0,
+      "defaultFrame": 0,
       "hoveredFrame": 1,
       "pressedFrame": 2,
       "frameWidth": 76,
