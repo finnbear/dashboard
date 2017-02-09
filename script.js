@@ -68,30 +68,36 @@ Game.update = function() {
 	Game.objects.forEach(function(object) {
 		if (object.enabled)
 		{
-			switch (object.type)
+			var hovered = false;
+			switch (object.sprite.shape)
 			{
-				case "button":
-					if (mouseInRect(object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight))
-					{
-						if (Mouse.left)
-						{
-							object.sprite.frame = 2;
-							object.lastPressed = +new Date();
-						}
-						else if (+new Date() - object.lastPressed < 150)
-						{
-							object.sprite.frame = 2;
-						}
-						else
-						{
-							object.sprite.frame = 1
-						}	
-					}
-					else
-					{
-						object.sprite.frame = 0;
-					}
+				case "rect":
+					hovered = mouseInRect(object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight);
 					break;
+				case "circle":
+					hovered = mouseInCircle(object.sprite.displayX + object.sprite.displayWidth / 2, object.sprite.displayY + object.sprite.displayHeight / 2, object.sprite.hoverRadius * 0.25 * (object.sprite.displayWidth + object.sprite.displayHeight));
+					break;
+			}
+			
+			if (hovered)
+			{
+				if (Mouse.left)
+				{
+					object.sprite.frame = object.sprite.pressedFrame;
+					object.lastPressed = +new Date();
+				}
+				else if (+new Date() - object.lastPressed < 150)
+				{
+					object.sprite.frame =  object.sprite.pressedFrame;
+				}
+				else
+				{
+					object.sprite.frame = object.sprite.hoveredFrame;
+				}	
+			}
+			else
+			{
+				object.sprite.frame = 0;
 			}
 		}
 	});
@@ -104,9 +110,7 @@ Game.draw = function() {
 	
 	Game.objects.forEach(function(object) {
 		if (object.enabled)
-		{
-			
-			
+		{	
 			Display.context.drawImage(object.sprite.image, object.sprite.frameWidth * object.sprite.frame, 0, object.sprite.frameWidth, object.sprite.frameHeight, object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight);
 		}
 	});
@@ -148,4 +152,13 @@ var mouseInRect = function(rectX, rectY, rectWidth, rectHeight)
 	return inRect(Mouse.x, Mouse.y, rectX, rectY, rectWidth, rectHeight);
 }
 
+var inCircle = function(x, y, circleX, circleY, circleRadius)
+{
+	return Math.sqrt(Math.pow(x - circleX, 2) + Math.pow(y - circleY, 2)) <= circleRadius;
+}
+
+var mouseInCircle = function(circleX, circleY, circleRadius)
+{
+	return inCircle(Mouse.x, Mouse.y, circleX, circleY, circleRadius);
+}
 

@@ -1,31 +1,61 @@
 [
   {
     "id": 0,
-    "type": "button",
     "enabled": true,
+    "lifespan": 5,
     "clicks": 0,
     "actions": [
       {
-        "id": 0,
+        "id": 1,
         "clicks": 1,
-        "newState": false
+        "newState": true
       },
       {
-        "id": 0,
+        "id": 2,
         "clicks": 5,
         "newState": true
       }
     ],
     "sprite": {
       "source": "button_red.png",
+      "shape": "circle",
       "frame": 0,
-      "frames": 3,
+      "hoveredFrame": 1,
+      "pressedFrame": 2,
       "frameWidth": 76,
       "frameHeight": 76,
-      "displayX": 10,
+      "displayX": 100,
+      "displayY": 100,
+      "displayWidth": 100,
+      "displayHeight": 100,
+      "hoverRadius": 0.70
+    }
+  },
+  {
+    "id": 1,
+    "enabled": false,
+    "lifespan": 5,
+    "clicks": 0,
+    "actions": [
+      {
+        "id": 0,
+        "clicks": 1,
+        "newState": false
+      }
+    ],
+    "sprite": {
+      "source": "button_red.png",
+      "shape": "rect",
+      "frame": 0,
+      "hoveredFrame": 1,
+      "pressedFrame": 2,
+      "frameWidth": 76,
+      "frameHeight": 76,
+      "displayX": 400,
       "displayY": 10,
-      "displayWidth": 76,
-      "displayHeight": 76
+      "displayWidth": 100,
+      "displayHeight": 100,
+      "hoverRadius": 0.80
     }
   }
 ]
