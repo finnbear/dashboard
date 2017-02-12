@@ -5,14 +5,18 @@ body {
 }
 
 .game-canvas-tile {
-	margin: 100px 100px 100px 100px;
-	width: calc(100% - 200px);
-	height: calc(100% - 200px);
+	width: 80%;
+	height: 1%;
+	/*min-height: 420px;*/
+	float: left;
+	text-align: center;
+	margin: 9%;
 	background-color: #FFFFFF;
 	border: thick solid #2c3e50;
 }
 
 .game-canvas {
+	position: relative;
 	width: 100%;
 	height: 100%;
 	background-color: #f1c40f;
