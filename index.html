@@ -19,11 +19,33 @@
 	<![endif]-->
 </head>
 
-<body background="textures/brick_tile_background.png", oncontextmenu="return false;">
+<body background="textures/brick_tile_background.png", oncontextmenu="return false;", onresize="resize();">
 	<div class="game-canvas-tile">
 		<canvas id="viewport" class="game-canvas" width="1000" height="1000"></canvas>
 	</div>
 	<script type="text/javascript" charset="utf-8">
+	var resize = function()
+	{
+		var docWidth = document.documentElement.clientWidth;
+		var docHeight = document.documentElement.clientHeight;
+
+		var marginScale = docWidth / 10;
+
+		var gameCanvasTile = document.getElementsByClassName("game-canvas-tile")[0];
+		var newSize = Math.min(docWidth - marginScale, docHeight - marginScale);
+
+		var horizontalMargin = (docWidth - newSize) / 2;
+		var verticalMargin = (docHeight - newSize) / 2;
+	
+		gameCanvasTile.style.marginLeft = horizontalMargin + "px";
+		gameCanvasTile.style.marginRight = horizontalMargin + "px";
+		gameCanvasTile.style.marginTop = verticalMargin + "px";
+		gameCanvasTile.style.marginBottom = (verticalMargin - 10) + "px";
+
+		gameCanvasTile.style.width = newSize + "px";
+		gameCanvasTile.style.height = newSize + "px";
+	}
+
 	Game.initialize();
 	Game.run = (function() {
 	var loops = 0, skipTicks = 1000 / 30,
