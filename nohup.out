@@ -778,3 +778,10 @@
 127.0.0.1 - - [12/Feb/2017 09:37:59] "GET /textures/brick_tile_background.png HTTP/1.1" 200 -
 127.0.0.1 - - [12/Feb/2017 09:37:59] "GET /objects.json HTTP/1.1" 200 -
 127.0.0.1 - - [12/Feb/2017 09:37:59] "GET /textures/button_red.png HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2017 09:41:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2017 09:41:32] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2017 09:41:32] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2017 09:41:32] "GET /textures/brick_tile_background.png HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2017 09:41:32] "GET /objects.json HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2017 09:41:32] "GET /textures/button_red.png HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2017 09:41:32] "GET /favicon.ico HTTP/1.1" 200 -

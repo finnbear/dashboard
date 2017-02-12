@@ -50,7 +50,7 @@
     ],
     "sprite": {
       "source": "button_red.png",
-      "shape": "rect",
+      "shape": "circle",
       "frame": 0,
       "defaultFrame": 0,
       "hoveredFrame": 1,
