@@ -17,6 +17,17 @@ Game.initialize = function() {
 		Mouse.y = translate(docY, 0, canvasRectangle.height, 0, Display.height);
 	},
 	false);
+	
+	Display.canvas.addEventListener('touchmove',
+	function(e) {
+		var canvasRectangle = Display.canvas.getBoundingClientRect();
+		var docX = e.touches[0].clientX - canvasRectangle.left;
+		var docY = e.touches[0].clientY - canvasRectangle.top;
+		Mouse.x = translate(docX, 0, canvasRectangle.width, 0, Display.width);
+		Mouse.y = translate(docY, 0, canvasRectangle.height, 0, Display.height);
+	},
+	false);
+	
 	Display.canvas.addEventListener('mousedown',
 	function(e) {
 		switch (e.button)
