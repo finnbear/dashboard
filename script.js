@@ -35,22 +35,25 @@ Game.initialize = function() {
 		}
 	},
 	false);
+	
 	Display.canvas.addEventListener('mouseup',
 	function(e) {
-		switch (e.button)
-		{
-			case 0: // Left Click
-				Mouse.left = false;
-				break;
-			case 1: // Middle Click
-				Mouse.middle = false;
-				break;
-			case 2: // Right Click
-				Mouse.right = false;
-				break;
-			default:
-				alert("Thats one button you actually shouldn't press!");
-		}
+		setTimeout(function() {
+			switch (e.button)
+			{
+				case 0: // Left Click
+					Mouse.left = false;
+					break;
+				case 1: // Middle Click
+					Mouse.middle = false;
+					break;
+				case 2: // Right Click
+					Mouse.right = false;
+					break;
+				default:
+					alert("Thats one button you actually shouldn't press!");
+			}
+		}, 100);
 	},
 	false);
 	
