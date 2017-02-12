@@ -38,7 +38,9 @@ Game.initialize = function() {
 	
 	Display.canvas.addEventListener('touchstart',
 	function(e) {
+		setTimeout(function() {
 		Mouse.left = true;
+		}, 10);
 	},
 	false);
 	
@@ -59,7 +61,7 @@ Game.initialize = function() {
 				default:
 					alert("Thats one button you actually shouldn't press!");
 			}
-		}, 50);
+		}, 20);
 	},
 	false);
 	
@@ -67,7 +69,7 @@ Game.initialize = function() {
 	function(e) {
 		setTimeout(function() {
 			Mouse.left = false;
-		}, 50);
+		}, 20);
 	},
 	false);
 	
