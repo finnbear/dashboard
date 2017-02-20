@@ -3,6 +3,7 @@
     "id": 0,
     "enabled": true,
     "lifespan": 5,
+    "clickable": true,
     "clicks": 0,
     "state": "default",
     "states": {
@@ -17,17 +18,20 @@
         "type": "enable"
       },
       {
+        "id": 1,
+        "clicks": 4,
+        "type": "state",
+        "value": "on"
+      },
+      {
         "id": 0,
-        "clicks": 3,
+        "clicks": 5,
         "type": "disable"
       }
     ],
     "sprite": {
       "source": "button_red.png",
       "shape": "circle",
-      "defaultFrame": 0,
-      "hoveredFrame": 1,
-      "pressedFrame": 2,
       "frameWidth": 76,
       "frameHeight": 76,
       "displayX": 100,
@@ -35,6 +39,66 @@
       "displayWidth": 100,
       "displayHeight": 100,
       "hoverRadius": 0.7
+    }
+  },
+  {
+    "id": 1,
+    "enabled": false,
+    "lifespan": 5,
+    "clickable": false,
+    "clicks": 0,
+    "state": "default",
+    "states": {
+      "default": 0,
+      "off": 0,
+      "on": 1
+    },
+    "actions": [
+      {
+        "id": 0,
+        "clicks": 3,
+        "type": "disable"
+      },
+      {
+        "id": 0,
+        "clicks": 5,
+        "type": "enable"
+      }
+    ],
+    "sprite": {
+      "source": "bulb_yellow.png",
+      "shape": "circle",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "displayX": 200,
+      "displayY": 100,
+      "displayWidth": 100,
+      "displayHeight": 100,
+      "hoverRadius": 0.5
+    }
+  },
+  {
+    "id": 2,
+    "enabled": true,
+    "lifespan": 5,
+    "clickable": true,
+    "clicks": 0,
+    "state": "default",
+    "states": {
+      "default": 0,
+      "hovered": 2,
+      "pressed": 3
+    },
+    "actions": [],
+    "sprite": {
+      "source": "switch_red.png",
+      "shape": "rectangle",
+      "frameWidth": 42,
+      "frameHeight": 32,
+      "displayX": 300,
+      "displayY": 100,
+      "displayWidth": 132,
+      "displayHeight": 100
     }
   }
 ]

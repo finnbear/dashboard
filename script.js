@@ -101,7 +101,7 @@ Game.update = function() {
 			var hovered = false;
 			switch (object.sprite.shape)
 			{
-				case "rect":
+				case "rectangle":
 					hovered = mouseInRect(object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight);
 					break;
 				case "circle":
@@ -109,55 +109,58 @@ Game.update = function() {
 					break;
 			}
 			
-			if (hovered)
+			if (object.clickable)
 			{
-				if (Mouse.left)
+				if (hovered)
 				{
-					object.sprite.frame = object.sprite.pressedFrame;
-					if (!object.sprite.pressed && !(+new Date() - object.lastPressed < 150))
+					if (Mouse.left)
 					{
-						object.clicks += 1;
-						object.actions.forEach(function(action) {
-							if (object.clicks == action.clicks)
-							{
-								switch (action.type)
+						object.sprite.frame = object.sprite.pressedFrame;
+						if (!object.sprite.pressed && !(+new Date() - object.lastPressed < 150))
+						{
+							object.clicks += 1;
+							object.actions.forEach(function(action) {
+								if (object.clicks == action.clicks)
 								{
-									case "enable":
-										Game.objects[action.id].enabled = true;
-										Game.objects[action.id].clicks = 0;
-										Game.objects[action.id].state = "default";
-										break;
-									case "disable":
-										Game.objects[action.id].enabled = false;
-										Game.objects[action.id].clicks = 0;
-										Game.objects[action.id].sprite = "default";
-										break;
-									case "state":
-										Game.objects[action.id].state = action.value;
-										break;
+									switch (action.type)
+									{
+										case "enable":
+											Game.objects[action.id].enabled = true;
+											Game.objects[action.id].clicks = 0;
+											Game.objects[action.id].state = "default";
+											break;
+										case "disable":
+											Game.objects[action.id].enabled = false;
+											Game.objects[action.id].clicks = 0;
+											Game.objects[action.id].sprite = "default";
+											break;
+										case "state":
+											Game.objects[action.id].state = action.value;
+											break;
+									}
+									
 								}
-								
-							}
-						});
+							});
+						}
+						object.state = "pressed";
+						object.lastPressed = +new Date();
 					}
-					object.state = "pressed";
-					object.lastPressed = +new Date();
-				}
-				else if (+new Date() - object.lastPressed < 150)
-				{
-					object.state = "pressed";
-					object.sprite.pressed = false;
+					else if (+new Date() - object.lastPressed < 150)
+					{
+						object.state = "pressed";
+						object.sprite.pressed = false;
+					}
+					else
+					{
+						object.state = "hovered";
+						object.sprite.pressed = false;
+					}	
 				}
 				else
 				{
-					object.state = "hovered";
+					object.state = "default";
 					object.sprite.pressed = false;
-				}	
-			}
-			else
-			{
-				object.state = "default";
-				object.sprite.pressed = false;
+				}
 			}
 		}
 	});
