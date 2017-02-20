@@ -833,3 +833,72 @@
 127.0.0.1 - - [19/Feb/2017 18:54:41] "GET /textures/button_red.png HTTP/1.1" 200 -
 127.0.0.1 - - [19/Feb/2017 18:54:41] "GET /textures/bulb_yellow.png HTTP/1.1" 200 -
 127.0.0.1 - - [19/Feb/2017 18:54:41] "GET /favicon.ico HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:52:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:52:47] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:52:47] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:52:48] "GET /textures/brick_tile_background.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:52:48] "GET /objects.json HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:52:48] "GET /textures/button_red.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:52:48] "GET /textures/bulb_yellow.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:52:48] "GET /favicon.ico HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:55:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:55:08] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:55:08] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:55:08] "GET /textures/brick_tile_background.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:55:08] "GET /objects.json HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:55:08] "GET /textures/button_red.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:55:08] "GET /textures/bulb_yellow.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 08:55:08] "GET /favicon.ico HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "serve.py", line 16, in <module>
+    SimpleHTTPServer.test(HandlerClass=MyHTTPRequestHandler)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SimpleHTTPServer.py", line 231, in test
+    BaseHTTPServer.test(HandlerClass, ServerClass)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 606, in test
+    httpd = ServerClass(server_address, HandlerClass)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 417, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 108, in server_bind
+    SocketServer.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 431, in server_bind
+    self.socket.bind(self.server_address)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+socket.error: [Errno 48] Address already in use
+127.0.0.1 - - [20/Feb/2017 09:11:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:11:46] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:11:46] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:11:46] "GET /textures/brick_tile_background.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:11:46] "GET /objects.json HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:11:46] "GET /textures/button_red.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:11:46] "GET /favicon.ico HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:11:51] "GET /style.css HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "serve.py", line 16, in <module>
+    SimpleHTTPServer.test(HandlerClass=MyHTTPRequestHandler)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SimpleHTTPServer.py", line 231, in test
+    BaseHTTPServer.test(HandlerClass, ServerClass)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 606, in test
+    httpd = ServerClass(server_address, HandlerClass)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 417, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 108, in server_bind
+    SocketServer.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 431, in server_bind
+    self.socket.bind(self.server_address)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+socket.error: [Errno 48] Address already in use
+127.0.0.1 - - [20/Feb/2017 09:15:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:01] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:01] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:01] "GET /textures/brick_tile_background.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:01] "GET /objects.json HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:01] "GET /textures/button_red.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:29] "GET /script.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:29] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:29] "GET /textures/brick_tile_background.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:29] "GET /objects.json HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:29] "GET /textures/button_red.png HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2017 09:15:29] "GET /favicon.ico HTTP/1.1" 200 -
