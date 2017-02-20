@@ -49,18 +49,18 @@
       }
     ],
     "sprite": {
-      "source": "button_red.png",
+      "source": "bulb_yellow.png",
       "shape": "circle",
       "frame": 0,
       "defaultFrame": 0,
-      "hoveredFrame": 1,
-      "pressedFrame": 2,
-      "frameWidth": 76,
-      "frameHeight": 76,
+      "hoveredFrame": 2,
+      "pressedFrame": 3,
+      "frameWidth": 24,
+      "frameHeight": 24,
       "displayX": 200,
       "displayY": 100,
-      "displayWidth": 100,
-      "displayHeight": 100,
+      "displayWidth": 50,
+      "displayHeight": 50,
       "hoverRadius": 0.80
     }
   }
