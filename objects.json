@@ -93,8 +93,8 @@
     "sprite": {
       "source": "switch_red.png",
       "shape": "rectangle",
-      "frameWidth": 42,
-      "frameHeight": 32,
+      "frameWidth": 37,
+      "frameHeight": 34,
       "displayX": 300,
       "displayY": 100,
       "displayWidth": 132,
