@@ -14,19 +14,26 @@
     "actions": [
       {
         "id": 1,
-        "clicks": 3,
+        "clicks": 1,
         "type": "enable"
+      },
+      {
+        "id": 1,
+        "clicks": 2,
+        "type": "state",
+        "value": "on"
+      },
+      {
+        "id": 1,
+        "clicks": 3,
+        "type": "state",
+        "value": "off"
       },
       {
         "id": 1,
         "clicks": 4,
         "type": "state",
         "value": "on"
-      },
-      {
-        "id": 0,
-        "clicks": 5,
-        "type": "disable"
       }
     ],
     "sprite": {
@@ -74,8 +81,8 @@
       "frameHeight": 24,
       "displayX": 200,
       "displayY": 100,
-      "displayWidth": 100,
-      "displayHeight": 100,
+      "displayWidth": 75,
+      "displayHeight": 75,
       "hoverRadius": 0.5
     }
   },
