@@ -174,6 +174,7 @@ Game.draw = function() {
 	Game.objects.forEach(function(object) {
 		if (object.enabled)
 		{	
+			Display.context.imageSmoothingEnabled = object.sprite.smoothing;
 			Display.context.drawImage(object.sprite.image, object.sprite.frameWidth * object.states[object.state], 0, object.sprite.frameWidth, object.sprite.frameHeight, object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight);
 		}
 	});

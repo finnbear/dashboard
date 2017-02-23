@@ -32,6 +32,7 @@
     "sprite": {
       "source": "button_red.png",
       "shape": "circle",
+      "smoothing": true,
       "frameWidth": 76,
       "frameHeight": 76,
       "displayX": 100,
@@ -68,6 +69,7 @@
     "sprite": {
       "source": "bulb_yellow.png",
       "shape": "circle",
+      "smoothing": false,
       "frameWidth": 24,
       "frameHeight": 24,
       "displayX": 200,
@@ -93,6 +95,7 @@
     "sprite": {
       "source": "switch_red.png",
       "shape": "rectangle",
+      "smoothing": true,
       "frameWidth": 37,
       "frameHeight": 34,
       "displayX": 300,
