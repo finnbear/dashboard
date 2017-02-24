@@ -1,3 +1,7 @@
+/*
+ * © 2017 Finn Bear All Rights 
+ */
+
 var Game = {objects: []}
 var Display = {canvas: null, context: null, width: 0, height: 0, backgroundColor: "gray"}
 var Keyboard = {keys: []}
