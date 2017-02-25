@@ -2,7 +2,7 @@
  * © 2017 Finn Bear All Rights Reserved
  */
 
-var Game = {objects: []};
+var Game = {running: true, objects: []};
 
 Game.initialize = function() {
 	$.getJSON("objects.json", function(json) {
@@ -18,12 +18,10 @@ Game.initialize = function() {
 
 Game.update = function() {
 	Game.objects.forEach(function(object) {
-		if (object.enabled)
-		{
+		if (object.enabled) {
 			// Check if the mouse is hovering over the object based on the shape of the object
 			var hovered = false;
-			switch (object.sprite.shape)
-			{
+			switch (object.sprite.shape) {
 				case "rectangle":
 					hovered = mouseInRect(object.sprite.displayX, object.sprite.displayY, object.sprite.displayWidth, object.sprite.displayHeight);
 					break;
@@ -33,21 +31,15 @@ Game.update = function() {
 			}
 			
 			// Apply any clicks to the object
-			if (object.clickable)
-			{
-				if (hovered)
-				{
-					if (Mouse.left)
-					{
+			if (object.clickable) {
+				if (hovered) {
+					if (Mouse.left) {
 						object.sprite.frame = object.sprite.pressedFrame;
-						if (!object.sprite.pressed && !(+new Date() - object.lastPressed < 150))
-						{
+						if (!object.sprite.pressed && !(+new Date() - object.lastPressed < 150)) {
 							object.clicks += 1;
 							object.actions.forEach(function(action) {
-								if (object.clicks == action.clicks)
-								{
-									switch (action.type)
-									{
+								if (object.clicks == action.clicks) {
+									switch (action.type) {
 										case "enable":
 											Game.objects[action.id].enabled = true;
 											Game.objects[action.id].clicks = 0;
@@ -69,19 +61,16 @@ Game.update = function() {
 						object.state = "pressed";
 						object.lastPressed = +new Date();
 					}
-					else if (+new Date() - object.lastPressed < 150)
-					{
+					else if (+new Date() - object.lastPressed < 150) {
 						object.state = "pressed";
 						object.sprite.pressed = false;
 					}
-					else
-					{
+					else {
 						object.state = "hovered";
 						object.sprite.pressed = false;
 					}	
 				}
-				else
-				{
+				else {
 					object.state = "default";
 					object.sprite.pressed = false;
 				}
