@@ -6,6 +6,7 @@
 	<meta name="description", content="An online game">
 	<meta name="author", content="Finn Bear">
 
+	<script src="engine.js"></script>
 	<script src="game.js"></script>
 	<script src="editor.js"></script>
 
@@ -49,7 +50,10 @@
 	
 	resize();
 
+	Display.initialize();
 	Game.initialize();
+	Editor.initialize();
+
 	Game.run = (function() {
 	var loops = 0, skipTicks = 1000 / 30,
 	maxFrameSkip = 10,
@@ -67,22 +71,25 @@
 	(function() {
 		var onEachFrame;
 		if (window.webkitRequestAnimationFrame) {
-		onEachFrame = function(cb) {
-		var _cb = function() { cb(); webkitRequestAnimationFrame(_cb); }
-		_cb();
-		};
+			onEachFrame = function(cb) {
+					var _cb = function() { cb(); webkitRequestAnimationFrame(_cb);
+				}
+				_cb();
+			};
 		} else if (window.mozRequestAnimationFrame) {
-		onEachFrame = function(cb) {
-		var _cb = function() { cb(); mozRequestAnimationFrame(_cb); }
-		_cb();
-		};
+			onEachFrame = function(cb) {
+					var _cb = function() { cb(); mozRequestAnimationFrame(_cb); 
+				}
+				_cb();
+			};
 		} else {
-		onEachFrame = function(cb) {
-		setInterval(cb, 1000 / 30);
-		}
+			onEachFrame = function(cb) {
+				setInterval(cb, 1000 / 30);
+			}
 		}
 		window.onEachFrame = onEachFrame;
 	})();
+	
 	window.onEachFrame(Game.run);
 	</script>
 </body>
