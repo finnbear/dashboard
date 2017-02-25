@@ -22,6 +22,7 @@
 </head>
 
 <body background="textures/brick_tile_background.png", oncontextmenu="return false;", onresize="resize();">
+	<input id="switch-button" type="button" style="position: absolute; top:0;" onclick="switchGameEditor()" value="Editor"></input>
 	<div class="game-canvas-tile">
 		<canvas id="viewport" class="game-canvas" width="1000" height="1000"></canvas>
 	</div>
@@ -118,5 +119,17 @@
 
 	window.onEachFrame(Game.run);
 	window.onEachFrame(Editor.run);
+
+	var switchGameEditor = function() {
+		if (Game.running) {
+			Game.running = false;
+			Editor.running = true;
+			document.getElementById("switch-button").value = "Game";
+		} else {
+			Game.running = true;
+			Editor.running = false;
+			document.getElementById("switch-button").value = "Editor";
+		}
+	}
 	</script>
 </body>
