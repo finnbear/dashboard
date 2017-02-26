@@ -8,7 +8,29 @@ var gridSizeX = 50;
 var gridSizeY = 50;
 
 Editor.initialize = function() {
+	
+};
 
+Editor.enable = function() {
+	Editor.running = true;
+
+	var toolBar = document.getElementById("tool-bar");
+	addButton(toolBar, "Load", function() {
+		Memory.load();
+	});
+	addButton(toolBar, "Save", function() {
+		Memory.save();
+	});
+};
+
+Editor.disable = function() {
+	Editor.running = false;
+
+	var toolBar = document.getElementById("tool-bar");
+	while (toolBar.firstChild)
+	{
+		toolBar.removeChild(toolBar.firstChild);
+	}
 };
 
 Editor.update = function() {
@@ -39,3 +61,12 @@ var gridLine = function(x1, y1, x2, y2) {
 	Display.context.lineTo(x2, y2);
 	Display.context.stroke();
 };
+
+var addButton = function(parent, name, clickAction)
+{
+	var button = document.createElement("input");
+	button.type = "button"
+	button.value = name;
+	parent.appendChild(button);
+	button.addEventListener("click", clickAction);
+}

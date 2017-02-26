@@ -25,6 +25,9 @@
 	<input id="switch-button" type="button" style="position: absolute; top:0;" onclick="switchGameEditor()" value="Editor"></input>
 	<div class="game-canvas-tile">
 		<canvas id="viewport" class="game-canvas" width="1000" height="1000"></canvas>
+		<div id="tool-bar">
+		
+		</div>
 	</div>
 	<script type="text/javascript" charset="utf-8">
 	var resize = function() {
@@ -92,20 +95,26 @@
 		var onEachFrame;
 		if (window.requestAnimationFrame) {
 			onEachFrame = function(cb) {
-					var _cb = function() { cb(); requestAnimationFrame(_cb);
+				var _cb = function() {
+					cb(); 
+					requestAnimationFrame(_cb);
 				}
 				_cb();
 			};
 
 		} else if (window.webkitRequestAnimationFrame) {
 			onEachFrame = function(cb) {
-					var _cb = function() { cb(); webkitRequestAnimationFrame(_cb);
+				var _cb = function() {
+					cb();
+					webkitRequestAnimationFrame(_cb);
 				}
 				_cb();
 			};
 		} else if (window.mozRequestAnimationFrame) {
 			onEachFrame = function(cb) {
-					var _cb = function() { cb(); mozRequestAnimationFrame(_cb); 
+				var _cb = function() {
+					cb();
+					mozRequestAnimationFrame(_cb); 
 				}
 				_cb();
 			};
@@ -122,12 +131,12 @@
 
 	var switchGameEditor = function() {
 		if (Game.running) {
-			Game.running = false;
-			Editor.running = true;
+			Game.disable();
+			Editor.enable();
 			document.getElementById("switch-button").value = "Game";
 		} else {
-			Game.running = true;
-			Editor.running = false;
+			Game.enable();
+			Editor.disable();
 			document.getElementById("switch-button").value = "Editor";
 		}
 	}

@@ -2,22 +2,24 @@
  * © 2017 Finn Bear All Rights Reserved
  */
 
-var Game = {running: true, objects: []};
+var Game = {running: true};
 
 Game.initialize = function() {
 	$.getJSON("objects.json", function(json) {
-		Game.objects = json;
-		
-		Game.objects.forEach(function(object) {
-			// Initilize the object's sprite by loading its image
-			object.sprite.image = new Image();
-			object.sprite.image.src = "textures/" + object.sprite.source;
-		});
+		Memory.setObjects(json);
 	});
 }
 
+Game.enable = function() {
+	Game.running = true;
+};
+
+Game.disable = function() {
+	Game.running = false;
+};
+
 Game.update = function() {
-	Game.objects.forEach(function(object) {
+	Memory.objects.forEach(function(object) {
 		if (object.enabled) {
 			// Check if the mouse is hovering over the object based on the shape of the object
 			var hovered = false;
@@ -41,17 +43,17 @@ Game.update = function() {
 								if (object.clicks == action.clicks) {
 									switch (action.type) {
 										case "enable":
-											Game.objects[action.id].enabled = true;
-											Game.objects[action.id].clicks = 0;
-											Game.objects[action.id].state = "default";
+											Memory.objects[action.id].enabled = true;
+											Memory.objects[action.id].clicks = 0;
+											Memory.objects[action.id].state = "default";
 											break;
 										case "disable":
-											Game.objects[action.id].enabled = false;
-											Game.objects[action.id].clicks = 0;
-											Game.objects[action.id].sprite = "default";
+											Memory.objects[action.id].enabled = false;
+											Memory.objects[action.id].clicks = 0;
+											Memory.objects[action.id].sprite = "default";
 											break;
 										case "state":
-											Game.objects[action.id].state = action.value;
+											Memory.objects[action.id].state = action.value;
 											break;
 									}
 									
@@ -84,7 +86,7 @@ Game.draw = function() {
 	Display.clear();
 	
 	// Draw all the objects
-	Game.objects.forEach(function(object) {
+	Memory.objects.forEach(function(object) {
 		if (object.enabled)
 		{	
 			// Smoothing is enabled on a per-object basis due to sampling errors

@@ -5,6 +5,7 @@
 var Display = {canvas: null, context: null, width: 0, height: 0, backgroundColor: "gray"};
 var Keyboard = {keys: []};
 var Mouse = {x:0, y:0, left: false, middle: false, right: false};
+var Memory = {objects: []}
 
 Display.initialize = function() {
 	Display.canvas = document.getElementById("viewport");
@@ -43,7 +44,7 @@ Display.initialize = function() {
 				Mouse.right = true;
 				break;
 			default:
-				alert("Thats one button you actually shouldn't press!");
+				alert("That's one button you actually shouldn't press!");
 		}
 	},
 	false);
@@ -69,7 +70,7 @@ Display.initialize = function() {
 					Mouse.right = false;
 					break;
 				default:
-					alert("Thats one button you actually shouldn't press!");
+					alert("That's one button you actually shouldn't press!");
 			}
 		}, 20);
 	},
@@ -87,6 +88,30 @@ Display.clear = function() {
 	Display.context.clearRect(0, 0, Display.width, Display.height);
 	Display.context.fillStyle = Display.backgroundColor;
 	Display.context.fillRect(0, 0, Display.width, Display.height);
+};
+
+Memory.setObjects = function(objects)
+{
+	this.objects = objects;
+	this.objects.forEach(function(object) {
+		// Initilize the object's sprite by loading its image
+		object.sprite.image = new Image();
+		object.sprite.image.src = "textures/" + object.sprite.source;
+	});
+}
+
+Memory.load = function()
+{
+	if(typeof(Storage) !== "undefined") {
+		this.setObjects(JSON.parse(localStorage.getItem("objects")));
+	}
+};
+
+Memory.save = function()
+{
+	if(typeof(Storage) !== "undefined") {
+		localStorage.setItem("objects", JSON.stringify(this.objects));
+	}
 };
 
 window.addEventListener("keydown",
