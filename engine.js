@@ -90,6 +90,12 @@ Display.clear = function() {
 	Display.context.fillRect(0, 0, Display.width, Display.height);
 };
 
+Memory.addObject = function(object) {
+	this.objects.push(object);
+	object.sprite.image = new Image();
+	object.sprite.image.src = "textures/" + object.sprite.source;
+};
+
 Memory.setObjects = function(objects) {
 	this.objects = objects;
 	this.objects.forEach(function(object) {
@@ -97,7 +103,7 @@ Memory.setObjects = function(objects) {
 		object.sprite.image = new Image();
 		object.sprite.image.src = "textures/" + object.sprite.source;
 	});
-}
+};
 
 Memory.load = function() {
 	if(typeof(Storage) !== "undefined") {

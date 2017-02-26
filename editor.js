@@ -21,6 +21,33 @@ Editor.enable = function() {
 	addButton(toolBar, "Save", function() {
 		Memory.save();
 	});
+	addButton(toolBar, "Add Object", function() {
+		Memory.addObject({
+			"id": 3,
+			"enabled": true,
+			"lifespan": 5,
+			"clickable": true,
+			"clicks": 0,
+			"state": "default",
+			"states": {
+				"default": 0,
+				"hovered": 2,
+				"pressed": 3
+			},
+			"actions": [],
+			"sprite": {
+				"source": "button_green.png",
+				"shape": "rectangle",
+				"smoothing": true,
+				"frameWidth": 32,
+				"frameHeight": 24,
+				"displayX": 450,
+				"displayY": 100,
+				"displayWidth": 100,
+				"displayHeight": 75
+		    }
+		});
+	});
 };
 
 Editor.disable = function() {
@@ -41,6 +68,17 @@ Editor.draw = function() {
 	// Clear the canvas
 	Display.clear();
 
+	drawGrid();
+};
+
+var gridLine = function(x1, y1, x2, y2) {
+	Display.context.beginPath();
+	Display.context.moveTo(x1, y1);
+	Display.context.lineTo(x2, y2);
+	Display.context.stroke();
+};
+
+var drawGrid = function() {
 	var gridSpacingX = Display.width / gridSizeX;
 	var gridSpacingY = Display.height / gridSizeY;
 
@@ -53,13 +91,6 @@ Editor.draw = function() {
 	{
 		gridLine(0, y * gridSpacingY, Display.width, y * gridSpacingY);
 	}
-};
-
-var gridLine = function(x1, y1, x2, y2) {
-	Display.context.beginPath();
-	Display.context.moveTo(x1, y1);
-	Display.context.lineTo(x2, y2);
-	Display.context.stroke();
 };
 
 var addButton = function(parent, name, clickAction)
