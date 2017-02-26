@@ -5,9 +5,11 @@
 var Game = {running: true};
 
 Game.initialize = function() {
-	$.getJSON("objects.json", function(json) {
-		Memory.setObjects(json);
-	});
+	if (!Memory.load()) {
+		$.getJSON("objects.json", function(json) {
+			Memory.setObjects(json);
+		});
+	}
 }
 
 Game.enable = function() {

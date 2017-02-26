@@ -90,8 +90,7 @@ Display.clear = function() {
 	Display.context.fillRect(0, 0, Display.width, Display.height);
 };
 
-Memory.setObjects = function(objects)
-{
+Memory.setObjects = function(objects) {
 	this.objects = objects;
 	this.objects.forEach(function(object) {
 		// Initilize the object's sprite by loading its image
@@ -100,15 +99,19 @@ Memory.setObjects = function(objects)
 	});
 }
 
-Memory.load = function()
-{
+Memory.load = function() {
 	if(typeof(Storage) !== "undefined") {
-		this.setObjects(JSON.parse(localStorage.getItem("objects")));
+		if (localStorage.getItem("objects") === null) {
+			return false;
+		} else {
+			this.setObjects(JSON.parse(localStorage.getItem("objects")));
+			return true;
+		}
 	}
+	return null;
 };
 
-Memory.save = function()
-{
+Memory.save = function() {
 	if(typeof(Storage) !== "undefined") {
 		localStorage.setItem("objects", JSON.stringify(this.objects));
 	}
